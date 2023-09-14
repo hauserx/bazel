@@ -16,7 +16,7 @@
 import os
 import stat
 import string
-import unittest
+from absl.testing import absltest
 from src.test.py.bazel import test_base
 
 # pylint: disable=g-import-not-at-top
@@ -355,12 +355,12 @@ class LauncherTest(test_base.TestBase):
     ])
     test_py = self.ScratchFile('foo/test.py', [
         '#!/usr/bin/env python3',
-        'import unittest',
+        'from absl.testing import absltest',
         'class MyTest(unittest.TestCase):',
         '  def test_dummy(self):',
         '      pass',
         'if __name__ == \'__main__\':',
-        '  unittest.main()',
+        '  absltest.main()',
     ])
     self.ScratchFile('bar/BUILD', ['exports_files(["bar.txt"])'])
     self.ScratchFile('bar/bar.txt', ['hello'])
@@ -759,4 +759,4 @@ class LauncherTest(test_base.TestBase):
 
 
 if __name__ == '__main__':
-  unittest.main()
+  absltest.main()

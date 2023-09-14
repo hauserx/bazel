@@ -16,7 +16,7 @@
 
 import os
 import tempfile
-import unittest
+from absl.testing import absltest
 
 from src.test.py.bazel import test_base
 from src.test.py.bazel.bzlmod.test_utils import BazelRegistry
@@ -465,4 +465,4 @@ class ModCommandTest(test_base.TestBase):
 
 
 if __name__ == '__main__':
-  unittest.main()
+  absltest.main()

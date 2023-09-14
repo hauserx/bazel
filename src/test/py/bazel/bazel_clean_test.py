@@ -15,7 +15,7 @@
 import os
 import re
 import time
-import unittest
+from absl.testing import absltest
 from src.test.py.bazel import test_base
 
 
@@ -108,4 +108,4 @@ class BazelCleanTest(test_base.TestBase):
 
 
 if __name__ == '__main__':
-  unittest.main()
+  absltest.main()
