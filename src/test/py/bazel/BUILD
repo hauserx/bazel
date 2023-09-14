@@ -36,7 +36,10 @@ py_library(
         "//tools/ctexplain:__pkg__",
         "//tools/python:__pkg__",
     ],
-    deps = [requirement("bazel-runfiles")],
+    deps = [
+        "//third_party/py/abseil",
+        requirement("bazel-runfiles"),
+    ],
 )
 
 gen_workspace_stanza(
@@ -282,6 +285,7 @@ py_test(
     name = "bazel_lockfile_test",
     size = "medium",
     srcs = ["bzlmod/bazel_lockfile_test.py"],
+    shard_count = 5,
     tags = [
         "requires-network",
     ],

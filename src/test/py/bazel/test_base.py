@@ -24,8 +24,8 @@ import stat
 import subprocess
 import sys
 import tempfile
-import unittest
 import runfiles
+from absl.testing import absltest
 
 
 class Error(Exception):
@@ -45,7 +45,7 @@ class EnvVarUndefinedError(Error):
     Error.__init__(self, 'Environment variable "%s" is not defined' % name)
 
 
-class TestBase(unittest.TestCase):
+class TestBase(absltest.TestCase):
   """Bazel Python integration test base."""
 
   _runfiles = None
@@ -105,7 +105,7 @@ class TestBase(unittest.TestCase):
   )
 
   def setUp(self):
-    unittest.TestCase.setUp(self)
+    absltest.TestCase.setUp(self)
     if self._runfiles is None:
       self._runfiles = runfiles.Create()
     test_tmpdir = TestBase._CreateDirs(TestBase.GetEnv('TEST_TMPDIR'))
